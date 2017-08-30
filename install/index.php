@@ -2,6 +2,7 @@
 use Bitrix\Main\Loader;
 use Bitrix\Main\ModuleManager;
 use Bitrix\Main\Localization\Loc;
+use Msav\Module\Counters\CMsavModCountersHelper;
 
 Loc::loadMessages(__FILE__);
 
@@ -30,11 +31,13 @@ class msav_counters extends CModule
     {
         ModuleManager::registerModule($this->MODULE_ID);
         Loader::includeModule($this->MODULE_ID);
+        CMsavModCountersHelper::register($this->MODULE_ID);
     }
 
     function DoUninstall()
     {
         Loader::includeModule($this->MODULE_ID);
         ModuleManager::unRegisterModule($this->MODULE_ID);
+        CMsavModCountersHelper::unregister($this->MODULE_ID);
     }
 }
