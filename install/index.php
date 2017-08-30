@@ -6,6 +6,10 @@ use Msav\Module\Counters\CMsavModCountersHelper;
 
 Loc::loadMessages(__FILE__);
 
+// Защита от бага с автозагрузчиком классов
+//require_once (__DIR__ . '/../lib/class_msav_mod_counters_helper.php');
+//require_once (__DIR__ . '/../lib/class_msav_mod_counters_options.php');
+
 class msav_counters extends CModule
 {
     var $MODULE_ID = 'msav.counters';

@@ -1,8 +1,10 @@
 # msav.counters - подключение счётчиков
 Модуль 1С-Битрикс для подключения счётчиков аналитики к сайту
 ## Поддерживаемые счётчики
-* [Яндекс Метрика](https://metrika.yandex.ru/);
+* [Яндекс Метрика](https://metrika.yandex.ru/).
+* [Яндекс Вебмастер](https://webmaster.yandex.ru/).
 * [Google Analytics](https://analytics.google.com/).
+* [Google Webmasters](https://www.google.com/webmasters/).
 ## Настройка
 1. Откройте параметры модуля.
 2. Выберите сайт, на котором нужно разместить счётчик.

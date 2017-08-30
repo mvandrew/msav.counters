@@ -16,8 +16,8 @@ if ( !$USER->IsAdmin() ) {
 //
 // Подготовка списка сайтов
 //
-$arSites = CMsavModCountersHelper::get_sites_list();
-$siteId = $_REQUEST['site_id'] ? $_REQUEST['site_id'] : current(array_keys($arSites));
+//$arSites = CMsavModCountersHelper::get_sites_list();
+//$siteId = $_REQUEST['site_id'] ? $_REQUEST['site_id'] : current(array_keys($arSites));
 
 
 //
