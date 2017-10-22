@@ -1,17 +1,10 @@
-<?php
-
-use Msav\Module\Counters\CMsavModCountersOptions;
-
-$valOptions = CMsavModCountersOptions::get_instance();
-
-?>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
     (function (d, w, c) {
         (w[c] = w[c] || []).push(function() {
             try {
-                w.yaCounter<?= $valOptions->yandex_metrika ?> = new Ya.Metrika({
-                    id:<?= $valOptions->yandex_metrika ?>,
+                w.yaCounter[[yandex_metrika]] = new Ya.Metrika({
+                    id:[[yandex_metrika]],
                     clickmap:true,
                     trackLinks:true,
                     accurateTrackBounce:true,
@@ -32,5 +25,5 @@ $valOptions = CMsavModCountersOptions::get_instance();
         } else { f(); }
     })(document, window, "yandex_metrika_callbacks");
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/<?= $valOptions->yandex_metrika ?>" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/[[yandex_metrika]]" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->

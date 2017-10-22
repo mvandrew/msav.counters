@@ -54,7 +54,7 @@ class CMsavModCountersHelper
 
         $options = CMsavModCountersOptions::get_instance();
 
-        if ( $options->active ) {
+	    if ( $options->active ) {
 
             // Яндекс Вебмастер
             if ( strlen($options->yandex_webmaster) > 0 ) {
@@ -81,18 +81,24 @@ class CMsavModCountersHelper
 
             // Яндекс Метрика
             if ( strlen($options->yandex_metrika) > 0 ) {
-                ob_start();
-                $templateFile = __DIR__ . '/../templates/yandex_metrika.php';
-                include ($templateFile);
-                $counters .= ob_get_clean();
+                $templateFile = __DIR__ . '/../templates/yandex_metrika.tpl';
+                if ( file_exists($templateFile) && ($handler = fopen($templateFile, "r")) ) {
+                	$strBuffer = fread($handler, filesize($templateFile));
+                	fclose($handler);
+                	$strBuffer = preg_replace('#\[\[yandex_metrika\]\]#', $options->yandex_metrika, $strBuffer);
+                	$counters .= $strBuffer;
+                }
             }
 
             // Google Analytics
             if ( strlen($options->google_analytics) > 0 ) {
-                ob_start();
-                $templateFile = __DIR__ . '/../templates/google_analytics.php';
-                include ($templateFile);
-                $counters .= ob_get_clean();
+	            $templateFile = __DIR__ . '/../templates/google_analytics.tpl';
+	            if ( file_exists($templateFile) && ($handler = fopen($templateFile, "r")) ) {
+		            $strBuffer = fread($handler, filesize($templateFile));
+		            fclose($handler);
+		            $strBuffer = preg_replace('#\[\[google_analytics\]\]#', $options->google_analytics, $strBuffer);
+		            $counters .= $strBuffer;
+	            }
             }
 
         }
