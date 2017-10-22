@@ -1,0 +1,38 @@
+{
+  "name": "msav.counters",
+  "version": "1.0.0",
+  "description": "Counters (Yandex & Google)",
+  "main": "include.php",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mvandrew/msav.counters.git"
+  },
+  "keywords": [
+    "bitrix",
+    "bitrix-module",
+    "yandex",
+    "google",
+    "metrika",
+    "analytics",
+    "webmasters"
+  ],
+  "author": "Andrey Mishchenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mvandrew/msav.counters/issues"
+  },
+  "homepage": "https://github.com/mvandrew/msav.counters#readme",
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-convert-encoding": "^1.0.0",
+    "gulp-zip": "^4.0.0",
+    "run-sequence": "^2.2.0"
+  }
+}
