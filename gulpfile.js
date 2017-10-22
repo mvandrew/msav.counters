@@ -53,6 +53,9 @@ gulp.task( 'build-encode', function () {
 });
 
 
+//
+// Упаковка релизов в разных кодировках
+//
 gulp.task( 'build-zip', function () {
    // Получение данных из файла пакета
    var fs = require('fs');
