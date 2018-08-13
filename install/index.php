@@ -6,9 +6,6 @@ use Msav\Module\Counters\CMsavModCountersHelper;
 
 Loc::loadMessages(__FILE__);
 
-// Защита от бага с автозагрузчиком классов
-//require_once (__DIR__ . '/../lib/class_msav_mod_counters_helper.php');
-//require_once (__DIR__ . '/../lib/class_msav_mod_counters_options.php');
 
 class msav_counters extends CModule
 {
@@ -34,14 +31,22 @@ class msav_counters extends CModule
     function DoInstall()
     {
         ModuleManager::registerModule($this->MODULE_ID);
-        Loader::includeModule($this->MODULE_ID);
-        CMsavModCountersHelper::register($this->MODULE_ID);
+	    try {
+		    Loader::includeModule( $this->MODULE_ID );
+	    } catch ( \Bitrix\Main\LoaderException $e ) {
+	    	AddMessage2Log($e->getMessage());
+	    }
+	    CMsavModCountersHelper::register($this->MODULE_ID);
     }
 
     function DoUninstall()
     {
-        Loader::includeModule($this->MODULE_ID);
-        ModuleManager::unRegisterModule($this->MODULE_ID);
+	    try {
+		    Loader::includeModule( $this->MODULE_ID );
+	    } catch ( \Bitrix\Main\LoaderException $e ) {
+		    AddMessage2Log($e->getMessage());
+	    }
+	    ModuleManager::unRegisterModule($this->MODULE_ID);
         CMsavModCountersHelper::unregister($this->MODULE_ID);
     }
 }

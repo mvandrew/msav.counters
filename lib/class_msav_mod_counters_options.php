@@ -2,6 +2,8 @@
 
 namespace Msav\Module\Counters;
 
+use Bitrix\Main\ArgumentNullException;
+use Bitrix\Main\ArgumentOutOfRangeException;
 use Bitrix\Main\Config\Option;
 
 /**
@@ -53,13 +55,21 @@ class CMsavModCountersOptions
      */
     public function __construct() {
 
-        $this->active               = Option::get(CMsavModCountersHelper::$MODULE_ID, 'active');
+	    try {
 
-        $this->yandex_metrika       = Option::get(CMsavModCountersHelper::$MODULE_ID, 'yandex_metrika');
-        $this->yandex_webmaster     = Option::get(CMsavModCountersHelper::$MODULE_ID, 'yandex_webmaster');
+	    	$this->active               = Option::get( CMsavModCountersHelper::$MODULE_ID, 'active' );
 
-        $this->google_analytics     = Option::get(CMsavModCountersHelper::$MODULE_ID, 'google_analytics');
-        $this->google_webmasters    = Option::get(CMsavModCountersHelper::$MODULE_ID, 'google_webmasters');
+		    $this->yandex_metrika       = Option::get(CMsavModCountersHelper::$MODULE_ID, 'yandex_metrika');
+		    $this->yandex_webmaster     = Option::get(CMsavModCountersHelper::$MODULE_ID, 'yandex_webmaster');
+
+		    $this->google_analytics     = Option::get(CMsavModCountersHelper::$MODULE_ID, 'google_analytics');
+		    $this->google_webmasters    = Option::get(CMsavModCountersHelper::$MODULE_ID, 'google_webmasters');
+
+	    } catch ( ArgumentNullException $e ) {
+	    	AddMessage2Log($e->getMessage());
+	    } catch ( ArgumentOutOfRangeException $e ) {
+		    AddMessage2Log($e->getMessage());
+	    }
 
     } // __construct
 
